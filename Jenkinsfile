@@ -12,5 +12,19 @@ pipeline {
                 }
             }
         }
+      stage('Unit Test'){
+                steps{
+                    script{
+                    sh 'mvn test'
+                    }
+                }
+            }
+      stage('Build The Code'){
+                steps{
+                    script{
+                   sh 'mvn clean install -DskipTest'
+                     }
+                 }
+       }
     }
 }
