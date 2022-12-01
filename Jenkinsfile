@@ -28,5 +28,13 @@ pipeline {
                           }
                      }
        }
+                    stage('Check Code Coverage'){
+               steps{
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    echo 'The Junit is Sucessfull'
+                    jacoco ()
+                    echo 'The Code Coverage is Sucessfull'
+                }
+            }
     }
 }
