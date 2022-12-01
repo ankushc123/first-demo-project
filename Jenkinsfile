@@ -7,9 +7,9 @@ pipeline {
         stage('Git CheckOut')
         {
             steps{
-                git 'https://github.com/ankushc123/first-demo-project.git' // 
-                echo "Git Checkout Completed"
-       
+                script{
+                 git 'https://github.com/ankushc123/first-demo-project.git'
+                }
             }
         }
     }
