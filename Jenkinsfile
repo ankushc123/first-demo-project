@@ -39,7 +39,7 @@ pipeline {
      stage('Code Analysis With SonarQube'){
                steps{
                 withSonarQubeEnv(credentialsId: 'sonarq') {
-                sh'mvn clean package sonar:sonar
+                sh'mvn clean package sonar:sonar'
                    }                     
                 }
             }
