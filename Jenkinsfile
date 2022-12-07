@@ -36,18 +36,21 @@ pipeline {
                     echo 'The Code Coverage is Sucessfull'
                 }
             }
-         stage('SonarQube analysis') {
-             steps {
-                 script {
-          // requires SonarQube Scanner 2.8+
-                   scannerHome = tool 'SonarQube Scanner 4.7.0.2747'
-                         }
-                     withSonarQubeEnv('sonarqubecred') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                        sh'mvn clean package sonar:sonar -Dsonar.projectKey=Project1'
-                          }
-                        }
-                     }
+         stage('SonarCloud') {
+  environment {
+    SCANNER_HOME = tool 'SonarScanner'
+    ORGANIZATION = "igorstojanovski-github"
+    PROJECT_NAME = "MyProject"
+  }
+  steps {
+    withSonarQubeEnv('sonarqube_id') {
+        sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+        -Dsonar.java.binaries=build/classes/java/ \
+        -Dsonar.projectKey=$PROJECT_NAME \
+        -Dsonar.sources=.'''
+    }
+  }
+}
         }
     }
 
