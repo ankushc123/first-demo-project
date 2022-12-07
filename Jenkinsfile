@@ -28,7 +28,7 @@ pipeline {
                           }
                      }
        }
-                    stage('Check Code Coverage'){
+     stage('Check Code Coverage'){
                steps{
                     junit '**/target/surefire-reports/TEST-*.xml'
                     echo 'The Junit is Sucessfull'
@@ -36,5 +36,13 @@ pipeline {
                     echo 'The Code Coverage is Sucessfull'
                 }
             }
+     stage('Code Analysis With SonarQube'){
+               steps{
+                withSonarQubeEnv('sonarqube-4.7.0.2747'){
+                    sh'mvn sonar:sonar -Dsonar.projectKey=Project1'
+                    
+                }
+            }
+        }
     }
 }
