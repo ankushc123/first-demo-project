@@ -38,9 +38,9 @@ pipeline {
             }
      stage('Code Analysis With SonarQube'){
                steps{
-                withSonarQubeEnv('sonarqube-4.7.0.2747'){
-                    sh'mvn sonar:sonar -Dsonar.projectKey=Project1'
-                    
+                withSonarQubeEnv(credentialsId: 'sonarq') {
+                sh'mvn sonar:sonar -Dsonar.projectKey=Project1'
+                   }                     
                 }
             }
         }
