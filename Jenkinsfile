@@ -44,7 +44,7 @@ pipeline {
                          }
                      withSonarQubeEnv('sonarq') {
                         sh "${scannerHome}/bin/sonar-scanner"
-                        sh'mvn clean package sonar:sonar'
+                        sh'mvn clean package sonar:sonar -Dsonar.projectKey=Project1'
                           }
                         }
                      }
