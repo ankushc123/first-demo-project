@@ -36,13 +36,18 @@ pipeline {
                     echo 'The Code Coverage is Sucessfull'
                 }
             }
-     stage('Code Analysis With SonarQube'){
-               steps{
-                withSonarQubeEnv(credentialsId: 'sonarq') {
-                sh'mvn clean package sonar:sonar'
-                   }                     
-                }
-            }
+         stage('SonarQube analysis') {
+             steps {
+                 script {
+          // requires SonarQube Scanner 2.8+
+                   scannerHome = tool 'SonarQube Scanner 4.7.0.2747'
+                         }
+                     withSonarQubeEnv('sonarq') {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                        sh'mvn clean package sonar:sonar'
+                          }
+                        }
+                     }
         }
     }
 
