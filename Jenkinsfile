@@ -42,7 +42,7 @@ pipeline {
           // requires SonarQube Scanner 2.8+
                    scannerHome = tool 'SonarQube Scanner 4.7.0.2747'
                          }
-                     withSonarQubeEnv('sonarq') {
+                     withSonarQubeEnv('sonarqubecred') {
                         sh "${scannerHome}/bin/sonar-scanner"
                         sh'mvn clean package sonar:sonar -Dsonar.projectKey=Project1'
                           }
