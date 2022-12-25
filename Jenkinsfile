@@ -54,6 +54,7 @@ pipeline {
                 protocol: 'http', 
                 repository: 'Demo_Snapshot', 
                 version: '${mavenPom.version}'
+                }
         }
       }
      }
