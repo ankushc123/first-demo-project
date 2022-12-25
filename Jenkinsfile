@@ -35,7 +35,24 @@ pipeline {
                     jacoco()
                     echo 'The Code Coverage is Sucessfull'
                 }
-            } 
+            }
+        stage('Upload Artifact to Nexus')
+        steps{
+            nexusArtifactUploader artifacts: 
+                [
+                    [artifactId: 'first-demo-project', 
+                     classifier: '', 
+                     file: 'target/first-demo-project.jar', 
+                     type: 'jar']
+                ], 
+                credentialsId: 'nexus_cred', 
+                groupId: 'com.democompany', 
+                nexusUrl: '3.108.193.241:8081/', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'http://3.108.193.241:8081/repository/Demo_Snapshot/', 
+                version: '0.0.1-SNAPSHOT'
         }
+     }
    }
 
