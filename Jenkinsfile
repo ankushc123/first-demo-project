@@ -42,7 +42,7 @@ pipeline {
                 [
                     [artifactId: 'first-demo-project', 
                      classifier: '', 
-                     file: 'target/first-demo-project-${mavenPom.version}.jar', 
+                     file: 'target/first-demo-project-0.0.1-SNAPSHOT.jar', 
                      type: 'jar']
                 ], 
                 credentialsId: 'nexus_cred', 
