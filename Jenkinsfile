@@ -42,12 +42,12 @@ pipeline {
                 [
                     [artifactId: 'first-demo-project', 
                      classifier: '', 
-                     file: 'target/first-demo-project.jar', 
+                     file: 'target/first-demo-project-${mavenPom.version}.jar', 
                      type: 'jar']
                 ], 
                 credentialsId: 'nexus_cred', 
                 groupId: 'com.democompany', 
-                nexusUrl: '3.108.193.241:8081/', 
+                nexusUrl: '3.108.193.241:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'http://3.108.193.241:8081/repository/Demo_Snapshot/', 
