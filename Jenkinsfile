@@ -36,7 +36,7 @@ pipeline {
                     echo 'The Code Coverage is Sucessfull'
                 }
             }
-        stage('Upload Artifact to Nexus')
+        stage('Upload Artifact to Nexus'){
         steps{
             nexusArtifactUploader artifacts: 
                 [
@@ -53,6 +53,7 @@ pipeline {
                 repository: 'http://3.108.193.241:8081/repository/Demo_Snapshot/', 
                 version: '0.0.1-SNAPSHOT'
         }
+      }
      }
    }
 
