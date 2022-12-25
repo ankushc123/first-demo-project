@@ -38,20 +38,22 @@ pipeline {
             }
         stage('Upload Artifact to Nexus'){
         steps{
+                script{
+                  def mavenPom = readMavenPom file: 'pom.xml'
             nexusArtifactUploader artifacts: 
                 [
-                    [artifactId: 'first-demo-project', 
+                    [artifactId: '${mavenPom.artifactId}', 
                      classifier: '', 
-                     file: 'target/first-demo-project-0.0.1-SNAPSHOT.jar', 
+                     file: 'target/first-demo-project-${mavenPom.version}.jar', 
                      type: 'jar']
                 ], 
                 credentialsId: 'nexus_cred', 
-                groupId: 'com.democompany', 
-                nexusUrl: '3.108.193.241:8081', 
+                groupId: '${mavenPom.groupId}', 
+                nexusUrl: '3.108.193.241:8081/', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'Demo_Snapshot', 
-                version: '0.0.1-SNAPSHOT'
+                version: '${mavenPom.version}'
         }
       }
      }
