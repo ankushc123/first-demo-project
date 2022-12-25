@@ -6,7 +6,7 @@
 
   <groupId>com.democompany</groupId>
   <artifactId>first-demo-project</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
 
   <name>first-demo-project</name>
   <!-- FIXME change it to the project's website -->
