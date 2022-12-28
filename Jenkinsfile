@@ -36,7 +36,7 @@ pipeline {
                     echo 'The Code Coverage is Sucessfull'
                 }
             }
-      /* stage('Upload Artifact to Nexus'){
+      stage('Upload Artifact to Nexus'){
         steps{
                 script{
                   def mavenPom = readMavenPom file: 'pom.xml'
@@ -57,7 +57,7 @@ pipeline {
                 version: "${mavenPom.version}"
                 }
         }
-      }  */
+      }  
      }
    }
 
