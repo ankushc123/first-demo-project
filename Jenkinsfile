@@ -50,7 +50,7 @@ pipeline {
                 ], 
                 credentialsId: 'nexus_cred', 
                 groupId: "${mavenPom.groupId}", 
-                nexusUrl: '3.108.193.241:8081/', 
+                nexusUrl: '13.234.240.228:8081/', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: "${nexusRepoName}", 
