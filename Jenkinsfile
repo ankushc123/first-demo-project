@@ -58,7 +58,7 @@ pipeline {
                 }
         }
       }
-        stage('Run Ansible commands from jenkins'){
+     /*   stage('Run Ansible commands from jenkins'){
         steps{
         sshagent(credentials: ['ansadmin_id']) {
             sh """
@@ -67,7 +67,7 @@ pipeline {
             """
           }
         }
-      }
+      } */
     }
   }
 
