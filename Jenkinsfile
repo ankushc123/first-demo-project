@@ -57,7 +57,17 @@ pipeline {
                 version: "${mavenPom.version}"
                 }
         }
-      }  
-     }
-   }
+      }
+        stage(Run Ansible commands from jenkins){
+        steps{
+        sshagent(credentials: ['ansadmin_id']) {
+            sh """
+            sudo su - ansadmin;
+            ansible-playbook tomcat_install.yml;
+            """
+          }
+        }
+      }
+    }
+  }
 
