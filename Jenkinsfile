@@ -58,16 +58,15 @@ pipeline {
                 }
         }
       }
-     /*   stage('Run Ansible commands from jenkins'){
-        steps{
-        sshagent(credentials: ['ansadmin_id']) {
-            sh """
-            sudo su - ansadmin;
-            ansible-playbook tomcat_install.yml;
-            """
-          }
-        }
-      } */
+ /*  stage('Artifactory Pull on ansible') {
+            agent {
+                label 'ans'
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'ansible-id', passwordVariable: 'ansadmin_pass', usernameVariable: 'ansadmin')]) {
+                sh 'wget --user=$ansadmin --password=$ansadmin_pass "http://3.109.5.157:8081/repository/my-artifacts/in/javahome/simple-app/7.0.0/simple-app-7.0.0.war"'
+                 echo 'The Artifact is Pulled Sucessfully'
+}  */
     }
   }
 
