@@ -68,7 +68,7 @@ agent
     }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus_id', passwordVariable: 'nexus_pass', usernameVariable: 'nuxus_user')]) {
-                sh 'wget --user=$nuxus_user --password=$nuxus_pass "com/democompany/first-demo-project/4.0.0/first-demo-project-4.0.0.jar"'
+                sh 'wget --user=$nuxus_user --password=$nuxus_pass "http://com/democompany/first-demo-project/4.0.0/first-demo-project-4.0.0.jar"'
                  echo 'The Artifact is Pulled Sucessfully'
                   }
              }
