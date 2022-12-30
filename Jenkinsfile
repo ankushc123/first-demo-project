@@ -1,5 +1,4 @@
 pipeline {
-    agent any
     /*{
         node{
         label 'java-build-node'
