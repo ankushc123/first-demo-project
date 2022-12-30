@@ -1,10 +1,10 @@
 pipeline {
-    agent  none
-    /*{
+    agent
+    {
         node{
-        label 'java-build-node'
+        label 'mvn'
         }
-} */
+    }
     environment {
    PATH = "/opt/maven/apache-maven-3.8.6/bin/:$PATH" 
     }
@@ -60,9 +60,12 @@ pipeline {
         }
       }
     stage('Artifactory Pull on ansible') {
-        agent {
-                label 'ans'
-            }
+agent
+    {
+        node{
+        label 'ans'
+        }
+    }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus_id', passwordVariable: 'nexus_pass', usernameVariable: 'nuxus_user')]) {
                 sh 'wget --user=$nuxus_user --password=$nuxus_pass "com/democompany/first-demo-project/4.0.0/first-demo-project-4.0.0.jar"'
