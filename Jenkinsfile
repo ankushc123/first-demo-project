@@ -59,15 +59,15 @@ pipeline {
                 }
         }
       }
- /*  stage('Artifactory Pull on ansible') {
-            agent {
+    stage('Artifactory Pull on ansible') {
+        agent {
                 label 'ans'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'ansible-id', passwordVariable: 'ansadmin_pass', usernameVariable: 'ansadmin')]) {
-                sh 'wget --user=$ansadmin --password=$ansadmin_pass "http://3.109.5.157:8081/repository/my-artifacts/in/javahome/simple-app/7.0.0/simple-app-7.0.0.war"'
+                withCredentials([usernamePassword(credentialsId: 'nexus_id', passwordVariable: 'nexus_pass', usernameVariable: 'nuxus_user')]) {
+                sh 'wget --user=$nuxus_user --password=$nuxus_pass "com/democompany/first-demo-project/4.0.0/first-demo-project-4.0.0.jar"'
                  echo 'The Artifact is Pulled Sucessfully'
-}  */
-    }
-  }
+                  }
+             }
+      }
 
