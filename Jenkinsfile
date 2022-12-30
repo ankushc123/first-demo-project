@@ -1,9 +1,10 @@
 pipeline {
-    agent {
+    agent any
+    /*{
         node{
         label 'java-build-node'
         }
-}
+} */
     environment {
    PATH = "/opt/apache-maven-3.8.6/bin/:$PATH" 
     }
@@ -50,7 +51,7 @@ pipeline {
                 ], 
                 credentialsId: 'nexus_cred', 
                 groupId: "${mavenPom.groupId}", 
-                nexusUrl: '13.234.240.228:8081/', 
+                nexusUrl: 'http://15.206.69.80:8081/', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: "${nexusRepoName}", 
